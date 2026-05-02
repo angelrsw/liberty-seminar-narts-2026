@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Liberty Seminar Course at NARTS 2026 | Resaleworld</title>
+<meta name="description" content="Join Resaleworld's annual Liberty Seminar Course at the NARTS 2026 conference. Free, expert-led, hands-on training for Liberty users. Limited seating — register today." />
+<meta name="robots" content="noindex, nofollow" />
+<!-- ^ remove the noindex line before pushing live to WordPress -->
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Liberty Seminar Course at NARTS 2026" />
+<meta property="og:description" content="Free, expert-led Liberty training at the annual NARTS conference. Limited seating — register today." />
+<meta property="og:image" content="https://www.resaleworld.com/wp-content/uploads/2018/05/resaleworld_logo.svg" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   LIBERTY SEMINAR COURSE — NARTS 2026 Landing Page
+   Single-file HTML/CSS/JS. Standalone. GitHub-friendly.
+   Brand: Resaleworld (mirrors liberty-training.html cadence)
+   ============================================================ */
+
+:root {
+  /* Brand palette — sourced directly from Resaleworld logo SVG (blue + orange + green + purple) */
+  --rw-primary: #006EB7;        /* Resaleworld blue — primary CTA, links, headers */
+  --rw-primary-dark: #00568F;   /* hover / pressed */
+  --rw-primary-tint: #E1F0FA;   /* tinted background washes */
+  --rw-accent: #F9A035;         /* Resaleworld orange — eyebrows, badges, emphasis */
+  --rw-accent-dark: #C57600;    /* darker orange for legible text on light bg */
+  --rw-accent-tint: #FEF1DE;    /* orange background washes */
+  --rw-green: #A1CC42;          /* Resaleworld green — secondary accent (sparingly) */
+  --rw-purple: #663594;         /* Resaleworld purple — secondary accent (sparingly) */
+
+  /* Neutrals */
+  --ink: #1A2B36;
+  --body: #2D3D49;
+  --muted: #6B7785;
+  --hairline: #E2E7EB;
+  --bg: #FFFFFF;
+  --bg-soft: #F5F7F8;
+  --bg-cream: #FFF8EE;
+
+  /* System */
+  --radius: 12px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 1px 2px rgba(16,24,40,0.05);
+  --shadow-md: 0 4px 14px rgba(16,24,40,0.08);
+  --shadow-lg: 0 18px 40px rgba(16,24,40,0.12);
+  --container: 1180px;
+
+  --t-fast: 160ms ease;
+  --t-med: 250ms ease;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--body);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; height: auto; }
+
+a {
+  color: var(--rw-primary);
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+a:hover { color: var(--rw-primary-dark); }
+
+h1, h2, h3, h4 {
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: clamp(2rem, 4.6vw, 3.4rem); font-weight: 800; }
+h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); }
+h3 { font-size: 1.25rem; }
+p  { margin-bottom: 1rem; }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rw-accent-dark);
+  background: var(--rw-accent-tint);
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.97rem;
+  padding: 14px 26px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform var(--t-fast), box-shadow var(--t-fast), background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
+  white-space: nowrap;
+  text-align: center;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primary {
+  background: var(--rw-primary);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover {
+  background: var(--rw-primary-dark);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--hairline);
+}
+.btn-secondary:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.btn-ghost {
+  background: #fff;
+  color: var(--rw-primary);
+  border-color: var(--rw-primary);
+}
+.btn-ghost:hover { background: var(--rw-primary); color: #fff; }
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: saturate(180%) blur(8px);
+  -webkit-backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--hairline);
+}
+.topbar .row {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 76px;
+}
+.topbar .brand {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 700; color: var(--ink); font-size: 1.05rem;
+  margin-left: -28px; /* optical alignment with hero <h1> below */
+}
+.topbar .brand .rsw-logo { height: 50px; }
+
+/* Inline brand logo — sprite reused via <use href="#rsw-logo"/> */
+.rsw-logo {
+  width: auto;
+  display: block;
+  /* aspect ratio of the source SVG = 400.23 / 131 ≈ 3.054 */
+}
+.rsw-logo--white { filter: brightness(0) invert(1); }
+.topbar nav a {
+  margin-left: 22px; color: var(--ink); font-weight: 500; font-size: 0.95rem;
+}
+.topbar nav a:hover { color: var(--rw-primary); }
+@media (max-width: 760px) {
+  .topbar nav { display: none; }
+}
+
+/* ============================================================
+   THEMED LINE ICONS (sprite-driven via <use href="#ic-*"/>)
+   ============================================================ */
+.ic-svg {
+  display: inline-block;
+  vertical-align: middle;
+  flex: 0 0 auto;
+  color: var(--rw-primary);
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  padding: 84px 0 72px;
+  background:
+    radial-gradient(1200px 500px at 80% -10%, rgba(249,160,53,0.10), transparent 60%),
+    radial-gradient(1000px 400px at 0% 110%, rgba(0,110,183,0.07), transparent 60%),
+    var(--bg);
+  overflow: hidden;
+}
+.hero .grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.hero h1 { margin-bottom: 18px; }
+.hero .lede {
+  font-size: 1.12rem; color: var(--body); max-width: 56ch; margin-bottom: 28px;
+}
+.hero .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+.hero .meta {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  color: var(--muted); font-size: 0.92rem;
+}
+.hero .meta span { display: inline-flex; align-items: center; gap: 6px; }
+.hero .meta .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--rw-primary); display: inline-block; }
+
+/* Hero card (visual right column) */
+.hero-card {
+  background: linear-gradient(180deg, #fff 0%, var(--bg-soft) 100%);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-lg);
+}
+.hero-card .pill {
+  display: inline-block;
+  background: var(--rw-primary);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+.hero-card h3 { margin-bottom: 8px; font-size: 1.35rem; }
+.hero-card .when {
+  color: var(--muted); font-size: 0.95rem; margin-bottom: 16px;
+}
+.hero-card ul { list-style: none; margin-bottom: 22px; }
+.hero-card li {
+  position: relative; padding: 7px 0 7px 24px;
+  font-size: 0.95rem; color: var(--body);
+}
+.hero-card li::before {
+  content: "✓"; position: absolute; left: 0; top: 7px;
+  color: var(--rw-primary); font-weight: 800;
+}
+
+@media (max-width: 880px) {
+  .hero { padding: 60px 0 40px; }
+  .hero .grid { grid-template-columns: 1fr; gap: 36px; }
+}
+
+/* ============================================================
+   STATS STRIP
+   ============================================================ */
+.stats {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  padding: 36px 0;
+}
+.stats .grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+.stats .num {
+  font-size: 2rem; font-weight: 800; color: var(--rw-primary); line-height: 1;
+}
+.stats .lbl { color: var(--muted); font-size: 0.92rem; margin-top: 6px; }
+@media (max-width: 720px) { .stats .grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ============================================================
+   GENERIC SECTION
+   ============================================================ */
+section.block { padding: 80px 0; }
+section.block.tight { padding: 56px 0; }
+section.block.alt { background: var(--bg-soft); }
+
+.section-head {
+  max-width: 760px; margin: 0 auto 44px; text-align: center;
+}
+.section-head h2 { margin-bottom: 12px; }
+.section-head p  { color: var(--muted); font-size: 1.05rem; }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.about-card {
+  background: #fff; border: 1px solid var(--hairline);
+  border-radius: var(--radius); padding: 28px;
+  box-shadow: var(--shadow-sm); transition: transform var(--t-med), box-shadow var(--t-med), border-color var(--t-med);
+}
+.about-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: rgba(0,110,183,0.30); }
+.about-card .icon {
+  width: 48px; height: 48px; border-radius: 10px;
+  background: var(--rw-primary-tint); color: var(--rw-primary);
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.about-card .icon .ic-svg { width: 26px; height: 26px; }
+.about-card h3 { margin-bottom: 8px; }
+.about-card p { color: var(--body); font-size: 0.97rem; margin: 0; }
+@media (max-width: 880px) { .about-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   VENUE
+   ============================================================ */
+.venue {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.venue .copy h2 { margin-bottom: 14px; }
+.venue .copy p { color: var(--body); font-size: 1rem; }
+.venue-card {
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-left: 4px solid var(--rw-primary);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+}
+.venue-card .lbl {
+  text-transform: uppercase; font-size: 0.74rem; letter-spacing: 0.08em;
+  font-weight: 700; color: var(--muted); margin-bottom: 8px;
+}
+.venue-card h3 { margin-bottom: 6px; }
+.venue-card .row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px;
+}
+.venue-card .row > div .lbl { margin-bottom: 4px; }
+.venue-card .row > div p { margin: 0; font-size: 0.95rem; }
+.venue-card .note {
+  margin-top: 18px; padding-top: 18px; border-top: 1px dashed var(--hairline);
+  font-size: 0.9rem; color: var(--muted); font-style: italic;
+}
+@media (max-width: 880px) { .venue { grid-template-columns: 1fr; gap: 28px; } .venue-card .row { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   TOPICS (placeholder / "fluff")
+   ============================================================ */
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.topic {
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 26px;
+  position: relative;
+  transition: transform var(--t-med), box-shadow var(--t-med);
+}
+.topic:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.topic .badge {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--rw-accent-dark); background: var(--rw-accent-tint);
+  padding: 4px 10px; border-radius: 999px; margin-bottom: 12px;
+  text-transform: uppercase;
+}
+/* Brand-color variants for topic badges */
+.topic .badge.is-blue   { color: var(--rw-primary-dark); background: var(--rw-primary-tint); }
+.topic .badge.is-green  { color: #4F7A1E; background: #EFF7DC; }
+.topic .badge.is-purple { color: #4D2670; background: #EDE3F6; }
+.topic .ic-svg { display: block; width: 30px; height: 30px; margin-bottom: 12px; }
+.topic h3 { font-size: 1.1rem; margin-bottom: 6px; }
+.topic p { color: var(--body); font-size: 0.94rem; margin: 0; }
+@media (max-width: 880px) { .topics-grid { grid-template-columns: 1fr; } }
+
+.topics-note {
+  margin-top: 28px; text-align: center;
+  font-size: 0.92rem; color: var(--muted); font-style: italic;
+  max-width: 720px; margin-left: auto; margin-right: auto;
+}
+
+/* ============================================================
+   AUDIENCE
+   ============================================================ */
+.audience-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+}
+.aud-card {
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 22px;
+  text-align: center;
+  transition: transform var(--t-med), border-color var(--t-med);
+}
+.aud-card:hover { transform: translateY(-3px); border-color: var(--rw-primary); }
+.aud-card .ic-svg { display: block; width: 34px; height: 34px; margin: 0 auto 10px; }
+.aud-card h4 { font-weight: 600; font-size: 1rem; margin-bottom: 4px; color: var(--ink); }
+.aud-card p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+@media (max-width: 880px) { .audience-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ============================================================
+   REGISTRATION
+   ============================================================ */
+.register {
+  background: linear-gradient(180deg, var(--bg-cream) 0%, #fff 100%);
+}
+.register-grid {
+  display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px;
+  align-items: stretch;
+}
+.register-copy h2 { margin-bottom: 14px; }
+.register-copy ul { list-style: none; margin-top: 18px; }
+.register-copy li {
+  position: relative; padding: 6px 0 6px 26px;
+  color: var(--body); font-size: 0.97rem;
+}
+.register-copy li::before {
+  content: "→"; position: absolute; left: 0; top: 6px;
+  color: var(--rw-primary); font-weight: 800;
+}
+.register-form {
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-md);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.register-form h3 { margin-bottom: 8px; }
+.register-form p.hint { color: var(--muted); font-size: 0.95rem; margin-bottom: 22px; }
+
+/* ---- MailChimp embed placeholder ---- */
+/*
+   ↓↓↓ REPLACE THIS PLACEHOLDER WITH MAILCHIMP EMBED ↓↓↓
+   Two ways to plug in MailChimp:
+
+   OPTION A — Embedded form
+     Paste MailChimp's embed <form> + <script> output into
+     the <div id="mc-embed-target"></div> below.
+     Then hide or delete .mc-placeholder.
+
+   OPTION B — Hosted signup link
+     Replace href="#" on the .btn-primary below with the
+     MailChimp signup URL. Then hide or delete .mc-placeholder
+     and #mc-embed-target.
+*/
+.mc-placeholder {
+  border: 2px dashed var(--rw-primary);
+  background: var(--rw-primary-tint);
+  border-radius: var(--radius);
+  padding: 22px;
+  text-align: center;
+  margin-bottom: 18px;
+  color: var(--rw-primary-dark);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.mc-placeholder small {
+  display: block; font-weight: 400; color: var(--rw-primary-dark);
+  margin-top: 6px; opacity: 0.85;
+}
+#mc-embed-target { /* MailChimp form will be injected here */ }
+.register-form .fine {
+  margin-top: 14px; font-size: 0.82rem; color: var(--muted); text-align: center;
+}
+@media (max-width: 880px) { .register-grid { grid-template-columns: 1fr; gap: 30px; } .register-form { padding: 28px; } }
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-list {
+  max-width: 820px; margin: 0 auto;
+  border-top: 1px solid var(--hairline);
+}
+.faq-item {
+  border-bottom: 1px solid var(--hairline);
+}
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 0;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 1.03rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  font-size: 1.5rem; color: var(--rw-primary);
+  font-weight: 400; line-height: 1; transition: transform var(--t-fast);
+  flex: 0 0 auto;
+}
+.faq-item[open] summary::after { content: "−"; }
+.faq-item .a {
+  padding: 0 0 22px; color: var(--body); font-size: 0.97rem;
+}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.final-cta {
+  text-align: center;
+  padding: 80px 0;
+  background: linear-gradient(135deg, var(--rw-primary) 0%, var(--rw-primary-dark) 100%);
+  color: #fff;
+}
+.final-cta h2 { color: #fff; margin-bottom: 12px; }
+.final-cta p { color: rgba(255,255,255,0.9); max-width: 620px; margin: 0 auto 26px; font-size: 1.05rem; }
+.final-cta .cta-row { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.final-cta .btn-primary {
+  background: #fff; color: var(--rw-primary);
+}
+.final-cta .btn-primary:hover { background: var(--bg-soft); color: var(--rw-primary-dark); }
+.final-cta .btn-secondary {
+  background: transparent; color: #fff; border-color: rgba(255,255,255,0.6);
+}
+.final-cta .btn-secondary:hover { border-color: #fff; color: #fff; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: #1A1F2B;
+  color: #C9CDD6;
+  padding: 48px 0 32px;
+  font-size: 0.93rem;
+}
+footer .grid {
+  display: grid; grid-template-columns: 1.6fr 1fr 1.2fr; gap: 40px;
+}
+footer h4 {
+  color: #fff; font-size: 0.85rem; text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 14px;
+}
+footer a { color: #C9CDD6; }
+footer a:hover { color: #fff; }
+footer ul { list-style: none; }
+footer li { padding: 4px 0; }
+footer .brand-block .rsw-logo { height: 36px; margin-bottom: 14px; filter: brightness(0) invert(1); }
+footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; margin: 0; }
+.footer-bottom {
+  border-top: 1px solid #2A3040;
+  margin-top: 36px; padding-top: 18px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  color: #6F7689; font-size: 0.85rem;
+}
+@media (max-width: 880px) { footer .grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { footer .grid { grid-template-columns: 1fr; } }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SVG SPRITE — Resaleworld logo, defined once, reused via <use>
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="rsw-logo" viewBox="0 0 400.23 131">
+    <path fill="#a1cc42" d="M147.72,37.12s3.77-7.7,5.34-12.39l3.98,3.2S196.73-5.14,244.18.69c0,0,54.37,5.64,36.92,58.99,0,0-7.54,21.42-31.55,39.64l-4.56,1.17s12.09-7.7,25.55-28.74c0,0,18.05-29.5-.79-51.29,0,0-14.28-19.17-52.99-14.65,0,0-24.61.91-57.35,23.86l5.15,4.03s-16.84,2.58-16.84,3.43"/>
+    <path fill="#663594" d="M270.37,93.86s-3.77,7.72-5.36,12.41l-3.96-3.2s-39.64,33.07-87.18,27.25c0,0-54.39-5.64-36.91-58.99,0,0,7.54-21.42,31.55-39.64l4.56-1.13s-12.09,7.7-25.55,28.76c0,0-18.05,29.48.79,51.27,0,0,14.28,19.17,52.99,14.65,0,0,24.61-.91,57.35-23.86l-5.15-3.93s16.88-2.72,16.88-3.59"/>
+    <path fill="#f9a035" d="M0,52.28h4.94v5.54c1.16-2.07,2.83-3.84,4.85-5.18,1.61-1.12,3.76-1.21,5.47-.24,1.15.53,2.22,1.21,3.17,2.02l-2.47,3.83c-1.11-1-2.49-1.69-3.98-2.02-1.7-.15-3.38.44-4.58,1.59-1.15,1.24-1.94,2.74-2.3,4.35v14.35H0v-24.24Z"/>
+    <path fill="#f9a035" d="M38.11,53.49c-3.91-2.3-8.86-2.3-12.77,0-2.66,1.7-4.47,4.35-5.02,7.34,0,0-.79,6.05.19,7.76,1.18,4.06,4.64,7.17,8.98,8.06,4.55.95,9.31.03,13.09-2.54v-4.55s-8.39,6.05-14.9.85c0,0-2.02-1.01-2.64-5.34h17.99s1.06-7.62-4.94-11.53M24.95,61.83c1.32-6.17,6.51-6.17,6.51-6.17,3.53,0,6.39,2.71,6.39,6.04,0,.04,0,.08,0,.12h-12.9Z"/>
+    <path fill="#f9a035" d="M62.36,53.49v5.08c-1.53-.96-3.17-1.77-4.88-2.42-1.36-.28-2.77-.28-4.13,0,0,0-3.36,1.75-.53,3.93,2.7,1.54,5.3,3.25,7.77,5.1,0,0,6.6,3.83.34,10.08,0,0-4.81,4.25-14.54-.24l-.15-5.4c2.47,1.78,5.42,2.85,8.52,3.1,0,0,4.15,0,3.85-3.1,0,0-.28-1.25-5.22-3.75,0,0-6.88-4.03-6.88-6.19-.61-2.92.87-5.87,3.64-7.28,0,0,4.94-2.42,12.24,1.01"/>
+    <path fill="#f9a035" d="M84.5,72.55v-15.28s-4.66-10.68-17.73-2.5v5.1s4.07-3.1,4.51-2.86c0,0,6.79-2.34,7.94,2.02l.17,2.92c-3.32.82-6.52,2.05-9.52,3.65-3.19,1.42-4.56,5.03-3.05,8.05.93,1.87,2.82,3.16,4.99,3.42,2.15.18,4.31-.35,6.09-1.51l1.66-1.15s-.45,1.57,2.13,2.58c0,0,2.13.99,6.39-1.59v-3.43s-3.34,3.02-3.62.58M79.45,71.57s-5.39,4.76-7.94-.26c0,0-1.85-4.55,7.94-6.67v6.93Z"/>
+    <polygon fill="#f9a035" points="91.54 39.54 96.82 39.54 96.67 76.58 91.54 76.58 91.54 39.54"/>
+    <path fill="#f9a035" d="M119.96,53.65c-3.91-2.3-8.86-2.3-12.77,0-2.63,1.68-4.43,4.3-5,7.26,0,0-.79,6.05.19,7.76,1.18,4.06,4.64,7.16,8.98,8.06,4.5.93,9.21.02,12.97-2.52v-4.49s-8.39,5.92-14.9.83c0,0-2.13-.99-2.64-5.32h17.99s1.06-7.6-4.94-11.53M106.7,62.03c1.32-6.19,6.51-6.19,6.51-6.19,3.53,0,6.39,2.71,6.39,6.04,0,.05,0,.1,0,.14h-12.9Z"/>
+    <polygon fill="#006eb7" points="127.37 51.63 135.76 51.63 140.85 65 148 51.43 152.26 51.43 158.09 64.98 163.56 51.43 172.08 51.43 160.54 76.71 156.13 76.71 149.75 63.34 143.21 76.71 138.95 76.71 127.37 51.63"/>
+    <path fill="#006eb7" d="M202.71,64.66c.53-14.01-14.31-13.45-14.31-13.45-9.71-.18-16.09,5.56-15.18,13.7,1.41,12.45,14.22,11.83,14.22,11.83,16.24-.18,15.28-11.87,15.27-12.08ZM193.73,66.71s-.79,5.6-5.64,5.7c0,0-2.36.39-4.21-1.86-.69-.78-1.29-1.85-1.73-3.29-.41-2-.54-4.09-.13-6.09,0,0,.79-5.6,5.64-5.7,0,0,2.36-.39,4.21,1.86.69.78,1.29,1.85,1.73,3.29.41,2,.54,4.09.13,6.09Z"/>
+    <path fill="#006eb7" d="M207.55,51.21h8.35v7.94s1.81-6.53,7.45-7.94c2.36-.24,4.7.54,6.39,2.12l-2.13,6.75s-5.02-3.43-8.03-.34c0,0-1.81.91-3.58,5.02v11.83h-8.43l-.02-25.37Z"/>
+    <polygon fill="#006eb7" points="231.9 39.54 240.18 39.54 240.18 76.58 232.05 76.58 231.9 39.54"/>
+    <path fill="#006eb7" d="M264.54,39.62v12.94l-3.79-1.41c-4.46-.87-9.08.41-12.35,3.41-5.07,5.51-4.93,13.76.34,19.11,8.84,6.93,15.8.69,15.8.69v2.24h8.2v-36.96h-8.28M264.45,69.85s-5.19,4.33-9.26.4c-2.58-3.66-2.58-8.43,0-12.09,2.67-2.1,6.48-2.27,9.35-.42l-.09,12.11Z"/>
+    <path fill="#f9a035" d="M287.4,73.94c0,1.79-1.53,3.24-3.43,3.24-1.9.14-3.56-1.2-3.71-3-.15-1.8,1.27-3.37,3.17-3.51.18-.01.36-.01.54,0,1.9.01,3.43,1.47,3.43,3.26"/>
+    <path fill="#f9a035" d="M311.56,53.19v5.34s-4.6-3.16-8.39-2.26c-3.66.72-6.31,3.74-6.39,7.28,0,3.45-.28,5.95,4.85,8.44,3.48,1.03,7.26.61,10.39-1.17l.19,4.76s-9.45,4.03-16.24-1.31c-5.69-5.30-5.89-13.92-.45-19.45,0,0,5.47-5.52,16.07-1.67"/>
+    <path fill="#f9a035" d="M342.52,62.48c-1.64-11.14-14.35-10.78-14.35-10.78-7.10.21-12.80,5.63-12.99,12.35v.24c.47,14.11,15.39,12.66,15.39,12.66,13.99-1.75,11.94-14.47,11.94-14.47M334.39,70.92c-3.73,2.91-9.24,2.41-12.33-1.11,0,0-2.49-2.34-1.51-7.6.92-3.40,4.05-5.84,7.75-6.05,3.81-.09,7.28,2.05,8.73,5.38,0,0,1.98,5.82-2.64,9.27v.10Z"/>
+    <path fill="#f9a035" d="M346.75,52.28h5.37v2.82s7.73-7.96,15.07.69c0,0,11.58-10.52,16.82,2.72l.19,17.92h-4.90l-.26-16.79s-3.26-8.26-10.98-.91l-.15,17.65h-4.98v-17.33s-3.38-6.89-10.99-.69v18.14l-4.94.08-.26-24.30Z"/>
+    <polygon fill="#212126" points="386.56 52.66 386.56 53.49 389.01 53.49 389.01 59.53 389.99 59.53 389.99 53.49 392.25 53.49 392.25 52.66 386.56 52.66"/>
+    <polygon fill="#212126" points="393.33 52.66 393.33 59.45 394.38 59.45 394.38 54.42 396.10 59.45 397.29 59.45 399.21 54.48 399.21 59.45 400.23 59.45 400.23 52.66 398.76 52.66 396.91 57.92 394.78 52.66 393.33 52.66"/>
+  </symbol>
+
+  <!-- Themed line icons — stroke uses currentColor so .ic-svg controls the tint -->
+  <symbol id="ic-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 10l10-5 10 5-10 5z"/>
+    <path d="M22 10v6"/>
+    <path d="M6 12v4c2.5 2 9.5 2 12 0v-4"/>
+  </symbol>
+
+  <symbol id="ic-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+  </symbol>
+
+  <symbol id="ic-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12a8 8 0 0 1-12.5 6.5L3 21l2.5-5.5A8 8 0 1 1 21 12z"/>
+    <path d="M9 12h.01"/>
+    <path d="M12 12h.01"/>
+    <path d="M15 12h.01"/>
+  </symbol>
+
+  <symbol id="ic-dollar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="6" width="20" height="12" rx="2"/>
+    <circle cx="12" cy="12" r="2.5"/>
+    <path d="M6 12h.01"/>
+    <path d="M18 12h.01"/>
+  </symbol>
+
+  <symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="4" width="20" height="16" rx="2"/>
+    <path d="M22 7l-10 7L2 7"/>
+  </symbol>
+
+  <symbol id="ic-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="9" cy="20" r="1.5"/>
+    <circle cx="18" cy="20" r="1.5"/>
+    <path d="M2 3h2.5l2.4 12.2a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L21 7H6"/>
+  </symbol>
+
+  <symbol id="ic-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+    <polyline points="16 7 22 7 22 13"/>
+  </symbol>
+
+  <symbol id="ic-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="2" y1="12" x2="22" y2="12"/>
+    <path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/>
+  </symbol>
+
+  <symbol id="ic-chats" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 9a2 2 0 0 1-2 2H6l-3 3V4a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2z"/>
+    <path d="M18 9h2a2 2 0 0 1 2 2v11l-3-3h-7a2 2 0 0 1-2-2v-1"/>
+  </symbol>
+
+  <symbol id="ic-shop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 9l1.5-4h15L21 9"/>
+    <path d="M4 9v11h16V9"/>
+    <path d="M9 20v-6h6v6"/>
+    <path d="M3 9c0 1.7 1.3 3 3 3s3-1.3 3-3 1.3 3 3 3 3-1.3 3-3 1.3 3 3 3 3-1.3 3-3"/>
+  </symbol>
+
+  <symbol id="ic-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+    <circle cx="9" cy="7" r="4"/>
+    <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+  </symbol>
+
+  <symbol id="ic-sprout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7 20h10"/>
+    <path d="M12 20v-7"/>
+    <path d="M12 13C12 9 9 7 5 7c0 4 3 7 7 6z"/>
+    <path d="M12 13c0-3 2-6 7-6 0 3-2 6-7 6z"/>
+  </symbol>
+
+  <symbol id="ic-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="22 4 22 10 16 10"/>
+    <polyline points="2 20 2 14 8 14"/>
+    <path d="M3.5 9a9 9 0 0 1 14.85-3.36L22 10"/>
+    <path d="M2 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+  </symbol>
+</svg>
+
+<!--
+  Note: page header (topbar) and footer are intentionally OMITTED.
+  This page is designed to be embedded inside the resaleworld.com
+  WordPress template, which provides its own global header and footer.
+  The SVG sprite above (logo + line icons) is still required by body content.
+-->
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="container grid">
+    <div>
+      <span class="eyebrow">Annual Liberty Seminar Course · NARTS 2026</span>
+      <h1>Sharpen your store, your software, and your strategy at NARTS 2026.</h1>
+      <p class="lede">
+        Resaleworld is hosting our annual Liberty Seminar Course alongside the National Association of Resale Professionals (NARTS) Conference. A full session of expert-led training, designed for Liberty users who want to walk away with real, actionable wins for their business — at no cost to attend.
+      </p>
+      <div class="cta-row">
+        <a href="#register" class="btn btn-primary">Reserve your seat — Free</a>
+        <a href="#topics" class="btn btn-secondary">See what we'll cover</a>
+      </div>
+      <div class="meta">
+        <span><span class="dot"></span> Free for Liberty users</span>
+        <span><span class="dot"></span> Limited seating</span>
+        <span><span class="dot"></span> Held at the NARTS conference</span>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-labelledby="hero-card-title">
+      <span class="pill">At-a-glance</span>
+      <h3 id="hero-card-title">Liberty Seminar Course</h3>
+      <p class="when">Co-located with the NARTS 2026 Annual Conference · Details to be announced</p>
+      <ul>
+        <li>Live, expert-led training from the Resaleworld team</li>
+        <li>New integrations, real workflows, real Q&amp;A</li>
+        <li>Hosted at (or near) the NARTS conference hotel</li>
+        <li>100% free — registration required</li>
+      </ul>
+      <a href="#register" class="btn btn-primary" style="width:100%;">Register Free →</a>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS STRIP
+     ============================================================ -->
+<section class="stats">
+  <div class="container grid">
+    <div>
+      <div class="num">25+</div>
+      <div class="lbl">Years training resale pros</div>
+    </div>
+    <div>
+      <div class="num">1</div>
+      <div class="lbl">Full day with our experts</div>
+    </div>
+    <div>
+      <div class="num">6+</div>
+      <div class="lbl">Hands-on sessions</div>
+    </div>
+    <div>
+      <div class="num">100%</div>
+      <div class="lbl">Free to attend</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT THE SEMINAR
+     ============================================================ -->
+<section id="about" class="block">
+  <div class="container">
+    <div class="section-head">
+      <h2>What you'll get out of the day</h2>
+      <p>Each year at NARTS, we set aside dedicated time to walk Liberty users through the latest features, the workflows that move the needle, and the questions that matter most to your store.</p>
+    </div>
+    <div class="about-grid">
+      <article class="about-card">
+        <span class="icon" aria-hidden="true"><svg class="ic-svg"><use href="#ic-cap"/></svg></span>
+        <h3>Live, expert-led sessions</h3>
+        <p>Hands-on instruction from the Resaleworld team — the same people who build, support, and train Liberty every day.</p>
+      </article>
+      <article class="about-card">
+        <span class="icon" aria-hidden="true"><svg class="ic-svg"><use href="#ic-zap"/></svg></span>
+        <h3>Workflows you can use Monday</h3>
+        <p>We focus on the practical: setup decisions, day-to-day rhythms, and the small adjustments that compound into real time savings.</p>
+      </article>
+      <article class="about-card">
+        <span class="icon" aria-hidden="true"><svg class="ic-svg"><use href="#ic-chat"/></svg></span>
+        <h3>Real Q&amp;A, real peers</h3>
+        <p>Bring your toughest Liberty questions — and meet other store owners doing the same work, solving the same problems.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VENUE / NARTS DETAILS
+     ============================================================ -->
+<section id="venue" class="block alt">
+  <div class="container venue">
+    <div class="copy">
+      <span class="eyebrow">Where</span>
+      <h2>Hosted alongside the NARTS Annual Conference</h2>
+      <p>
+        The Liberty Seminar Course is held in coordination with NARTS each year. Our session takes place either inside the conference hotel or at a nearby Resaleworld-hosted location — close enough to walk between, easy to fold into the rest of your conference schedule.
+      </p>
+      <p>
+        Final venue, room, and timing details are confirmed closer to the event. Anyone registered will receive an email with the full schedule, address, and check-in instructions ahead of NARTS.
+      </p>
+    </div>
+    <div class="venue-card" aria-labelledby="venue-card-title">
+      <span class="lbl">NARTS 2026 Conference</span>
+      <h3 id="venue-card-title">City &amp; venue · TBA</h3>
+      <p>The official NARTS conference details for 2026 will be confirmed shortly.</p>
+      <div class="row">
+        <div>
+          <span class="lbl">Dates</span>
+          <p>Coming soon</p>
+        </div>
+        <div>
+          <span class="lbl">Liberty session</span>
+          <p>1 day · TBA</p>
+        </div>
+      </div>
+      <p class="note">Once NARTS publishes the host hotel, we'll update this page with the address, room, and start time. Registered attendees get the details first.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TOPICS — placeholder / fluff (easily editable)
+     ↓ EDIT TOPICS HERE — swap the cards once the agenda is locked.
+     ============================================================ -->
+<section id="topics" class="block">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Course Curriculum</span>
+      <h2>What we're planning to cover</h2>
+      <p>Sessions are still being finalized. The lineup will reflect what's freshest in Liberty Cloud and what we're hearing from store owners — including some of the new integrations rolling out by the time NARTS arrives.</p>
+    </div>
+
+    <div class="topics-grid">
+
+      <!-- TOPIC 1 — easy to swap -->
+      <article class="topic">
+        <span class="badge is-blue">New in Liberty Cloud</span>
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-dollar"/></svg>
+        <h3>Modern ACH payouts &amp; consignor payments</h3>
+        <p>Walk through the next generation of ACH payouts in Liberty Cloud — faster, more secure, and friendlier to your back office than paper checks.</p>
+      </article>
+
+      <!-- TOPIC 2 — easy to swap -->
+      <article class="topic">
+        <span class="badge">Marketing</span>
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-mail"/></svg>
+        <h3>Email &amp; SMS marketing with Klaviyo</h3>
+        <p>See how the upcoming Klaviyo integration plugs Liberty customer data into modern email and SMS flows — and what that unlocks for retention.</p>
+      </article>
+
+      <!-- TOPIC 3 — easy to swap -->
+      <article class="topic">
+        <span class="badge is-green">Workflow</span>
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-cart"/></svg>
+        <h3>Selling everywhere with reCommerce</h3>
+        <p>Get more out of the Shopify and eBay integrations — automate listings, manage markdowns, and keep online and in-store inventory aligned.</p>
+      </article>
+
+      <!-- TOPIC 4 — easy to swap -->
+      <article class="topic">
+        <span class="badge is-purple">Strategy</span>
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-trending"/></svg>
+        <h3>Pricing, reporting &amp; profitability</h3>
+        <p>A working session on the reports, pricing tools, and operational habits that consistently separate the most profitable Liberty stores.</p>
+      </article>
+
+      <!-- TOPIC 5 — easy to swap -->
+      <article class="topic">
+        <span class="badge is-blue">Industry</span>
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-globe"/></svg>
+        <h3>The state of resale &amp; what's next</h3>
+        <p>An honest look at where the resale industry is heading, what NARTS members are watching, and how Liberty is evolving to keep up.</p>
+      </article>
+
+      <!-- TOPIC 6 — easy to swap -->
+      <article class="topic">
+        <span class="badge is-green">Open forum</span>
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-chats"/></svg>
+        <h3>Roundtable &amp; live Q&amp;A</h3>
+        <p>Bring your hardest questions. Our team — and your fellow store owners — will work through them together in an open, hands-on format.</p>
+      </article>
+
+    </div>
+    <p class="topics-note">Final session list confirmed closer to NARTS. Registrants get the agenda by email as soon as it's locked.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     AUDIENCE
+     ============================================================ -->
+<section class="block alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Who the Liberty Seminar is built for</h2>
+      <p>Whether you're a brand-new Liberty user or you've run the software for fifteen years, you'll walk away with something you can put to work immediately.</p>
+    </div>
+    <div class="audience-grid">
+      <div class="aud-card">
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-shop"/></svg>
+        <h4>Store owners</h4>
+        <p>Sharpen the strategic levers — pricing, payouts, integrations.</p>
+      </div>
+      <div class="aud-card">
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-users"/></svg>
+        <h4>Managers</h4>
+        <p>Refine the daily workflows that keep your team moving.</p>
+      </div>
+      <div class="aud-card">
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-sprout"/></svg>
+        <h4>New Liberty users</h4>
+        <p>Build a strong foundation before the busy season hits.</p>
+      </div>
+      <div class="aud-card">
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-refresh"/></svg>
+        <h4>Long-time Liberty pros</h4>
+        <p>Discover the features and integrations you may have missed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REGISTRATION (MailChimp embed placeholder)
+     ============================================================ -->
+<section id="register" class="block register">
+  <div class="container register-grid">
+    <div class="register-copy">
+      <span class="eyebrow">Reserve your seat</span>
+      <h2>Free to attend — but seating is limited.</h2>
+      <p>Registration helps us plan the room, the materials, and the agenda. Sign up below and we'll follow up with the venue, schedule, and what to bring as soon as NARTS confirms the final details.</p>
+      <ul>
+        <li>No cost to register or attend</li>
+        <li>Open to current and prospective Liberty users</li>
+        <li>You'll receive event details by email once confirmed</li>
+        <li>Bring a colleague — multi-attendee registrations welcome</li>
+      </ul>
+    </div>
+
+    <div class="register-form">
+      <h3>Sign up for the Liberty Seminar at NARTS 2026</h3>
+      <p class="hint">Drop your details below and we'll lock in your spot.</p>
+
+      <!-- ▼ ▼ ▼  MAILCHIMP REGISTRATION FORM PLACEHOLDER  ▼ ▼ ▼ -->
+      <div class="mc-placeholder" role="status" aria-live="polite">
+        MailChimp registration form goes here
+        <small>Replace this block with the MailChimp embed code, or point the button below to your hosted MailChimp signup URL.</small>
+      </div>
+      <div id="mc-embed-target"><!-- MailChimp embed will be injected here --></div>
+      <a href="#" class="btn btn-primary" style="width:100%;" data-mc-url="REPLACE_WITH_MAILCHIMP_SIGNUP_URL">Register on MailChimp →</a>
+      <!-- ▲ ▲ ▲  END MAILCHIMP PLACEHOLDER  ▲ ▲ ▲ -->
+
+      <p class="fine">By registering, you agree to receive event-related emails from Resaleworld. You can unsubscribe at any time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section id="faq" class="block">
+  <div class="container">
+    <div class="section-head">
+      <h2>Frequently asked</h2>
+      <p>A few quick answers before you sign up. If you don't see your question, reach out — we're happy to help.</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Is the Liberty Seminar Course really free?</summary>
+        <div class="a">Yes — there's no cost to attend the seminar itself. Travel, lodging, and any NARTS Conference passes are handled separately by you and NARTS.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need to be a current Liberty customer to attend?</summary>
+        <div class="a">Not at all. The seminar is open to current Liberty users and to anyone evaluating Liberty for their store.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Where is the seminar held?</summary>
+        <div class="a">Each year we host the seminar inside the NARTS conference hotel or at a nearby venue within walking distance. The exact location, room, and start time are shared with registered attendees by email once NARTS publishes the official conference details.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What topics will be covered?</summary>
+        <div class="a">The agenda is finalized closer to the event and reflects the latest in Liberty Cloud — including new integrations, workflow improvements, and the questions we're hearing most often from store owners. Registrants receive the full agenda by email once it's locked.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Can I bring my team?</summary>
+        <div class="a">Absolutely. Multi-attendee registrations are encouraged — please register each person separately so we can plan seating and materials accurately.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What should I bring?</summary>
+        <div class="a">A laptop or tablet is helpful but not required. Bring your store's questions, your top workflow headaches, and a willingness to ask in front of peers — that's where the best conversations happen.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How will I know if anything changes?</summary>
+        <div class="a">Anyone registered will receive email updates as venue details, agenda items, and timing get confirmed. You'll always have the latest information before you travel.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FINAL CTA
+     ============================================================ -->
+<section class="final-cta">
+  <div class="container">
+    <h2>See you at NARTS.</h2>
+    <p>Reserve your free seat now and be the first to know when the venue and agenda are confirmed.</p>
+    <div class="cta-row">
+      <a href="#register" class="btn btn-primary">Register for the Liberty Seminar</a>
+      <a href="mailto:info@resaleworld.com?subject=Liberty%20Seminar%20at%20NARTS%202026" class="btn btn-secondary">Email our team</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer omitted — provided by the resaleworld.com WordPress template. -->
+
+<!-- ============================================================
+     JS — small enhancements
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* Smooth scroll for in-page anchors (extra polish on top of CSS) */
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href');
+      if (id.length > 1) {
+        var el = document.querySelector(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.replaceState(null, '', id);
+        }
+      }
+    });
+  });
+
+  /* MailChimp button placeholder wiring.
+     If a real signup URL is provided via data-mc-url, use it.
+     Otherwise scroll the user to the form area. */
+  var mcBtn = document.querySelector('[data-mc-url]');
+  if (mcBtn) {
+    var url = mcBtn.getAttribute('data-mc-url') || '';
+    if (url && url !== 'REPLACE_WITH_MAILCHIMP_SIGNUP_URL') {
+      mcBtn.setAttribute('href', url);
+      mcBtn.setAttribute('target', '_blank');
+      mcBtn.setAttribute('rel', 'noopener');
+    } else {
+      mcBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var msg = document.querySelector('.mc-placeholder');
+        if (msg) msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    }
+  }
+
+  /* Close other open FAQ items when one opens (single-open accordion).
+     Comment this block out for true multi-open behavior. */
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function (item) {
+    item.addEventListener('toggle', function () {
+      if (item.open) {
+        faqItems.forEach(function (other) {
+          if (other !== item) other.open = false;
+        });
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
