@@ -375,6 +375,14 @@ section.block.alt { background: var(--bg-soft); }
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
+/* 4-column variant for the 8-card workshop agenda layout */
+.topics-grid.topics-grid--four {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+@media (max-width: 1024px) {
+  .topics-grid.topics-grid--four { grid-template-columns: repeat(2, 1fr); }
+}
 .topic {
   background: #fff;
   border: 1px solid var(--hairline);
@@ -401,9 +409,24 @@ section.block.alt { background: var(--bg-soft); }
 @media (max-width: 880px) { .topics-grid { grid-template-columns: 1fr; } }
 
 .topics-note {
-  margin-top: 28px; text-align: center;
-  font-size: 0.92rem; color: var(--muted); font-style: italic;
-  max-width: 720px; margin-left: auto; margin-right: auto;
+  margin-top: 36px;
+  background: var(--rw-primary-tint);
+  border: 1px solid rgba(0,110,183,0.18);
+  border-left: 4px solid var(--rw-primary);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.topics-note p {
+  margin: 0;
+  font-size: 0.97rem;
+  color: var(--body);
+}
+.topics-note strong {
+  color: var(--ink);
+  font-weight: 700;
 }
 
 /* ============================================================
@@ -457,20 +480,16 @@ section.block.alt { background: var(--bg-soft); }
 .register-form h3 { margin-bottom: 8px; }
 .register-form p.hint { color: var(--muted); font-size: 0.95rem; margin-bottom: 22px; }
 
-/* ---- MailChimp embed placeholder ---- */
+/* ---- HubSpot form embed placeholder ---- */
 /*
-   ↓↓↓ REPLACE THIS PLACEHOLDER WITH MAILCHIMP EMBED ↓↓↓
-   Two ways to plug in MailChimp:
+   ↓↓↓ REPLACE THIS PLACEHOLDER WITH HUBSPOT EMBED ↓↓↓
 
-   OPTION A — Embedded form
-     Paste MailChimp's embed <form> + <script> output into
-     the <div id="mc-embed-target"></div> below.
-     Then hide or delete .mc-placeholder.
+   In HubSpot: Marketing → Forms → open your form → "Share" → "Embed code".
+   Paste both the <div class="hs-form-frame"> snippet AND the <script>
+   tag into <div id="mc-embed-target"></div> below, then delete .mc-placeholder.
 
-   OPTION B — Hosted signup link
-     Replace href="#" on the .btn-primary below with the
-     MailChimp signup URL. Then hide or delete .mc-placeholder
-     and #mc-embed-target.
+   The button at the bottom is a fallback for non-JS visitors. If the embed
+   loads correctly, the button is redundant and can be removed.
 */
 .mc-placeholder {
   border: 2px dashed var(--rw-primary);
@@ -487,7 +506,7 @@ section.block.alt { background: var(--bg-soft); }
   display: block; font-weight: 400; color: var(--rw-primary-dark);
   margin-top: 6px; opacity: 0.85;
 }
-#mc-embed-target { /* MailChimp form will be injected here */ }
+#mc-embed-target { /* HubSpot form will be injected here */ }
 .register-form .fine {
   margin-top: 14px; font-size: 0.82rem; color: var(--muted); text-align: center;
 }
@@ -690,6 +709,23 @@ footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; marg
     <path d="M3.5 9a9 9 0 0 1 14.85-3.36L22 10"/>
     <path d="M2 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
   </symbol>
+
+  <symbol id="ic-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+    <circle cx="7" cy="7" r="1.25"/>
+  </symbol>
+
+  <symbol id="ic-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="4" width="12" height="18" rx="2"/>
+    <path d="M9 4h6v3H9z"/>
+    <line x1="9" y1="12" x2="15" y2="12"/>
+    <line x1="9" y1="16" x2="13" y2="16"/>
+  </symbol>
+
+  <symbol id="ic-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6z"/>
+    <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>
+  </symbol>
 </svg>
 
 <!--
@@ -724,11 +760,11 @@ footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; marg
     <aside class="hero-card" aria-labelledby="hero-card-title">
       <span class="pill">At-a-glance</span>
       <h3 id="hero-card-title">Liberty Seminar Course</h3>
-      <p class="when">Co-located with the NARTS 2026 Annual Conference · Details to be announced</p>
+      <p class="when">4-hour workshop in 2 parts · Co-located with NARTS 2026 · Final venue TBA</p>
       <ul>
-        <li>Live, expert-led training from the Resaleworld team</li>
-        <li>New integrations, real workflows, real Q&amp;A</li>
-        <li>Hosted at (or near) the NARTS conference hotel</li>
+        <li>A mini MasterClass led by a Resaleworld trainer</li>
+        <li>Eight areas of Liberty — intake to reCommerce</li>
+        <li>Held at (or near) the NARTS conference hotel</li>
         <li>100% free — registration required</li>
       </ul>
       <a href="#register" class="btn btn-primary" style="width:100%;">Register Free →</a>
@@ -746,12 +782,12 @@ footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; marg
       <div class="lbl">Years training resale pros</div>
     </div>
     <div>
-      <div class="num">1</div>
-      <div class="lbl">Full day with our experts</div>
+      <div class="num">4 hr</div>
+      <div class="lbl">Live workshop, in 2 parts</div>
     </div>
     <div>
-      <div class="num">6+</div>
-      <div class="lbl">Hands-on sessions</div>
+      <div class="num">8</div>
+      <div class="lbl">Topic areas covered</div>
     </div>
     <div>
       <div class="num">100%</div>
@@ -815,7 +851,7 @@ footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; marg
         </div>
         <div>
           <span class="lbl">Liberty session</span>
-          <p>1 day · TBA</p>
+          <p>4 hours · 2 parts · TBA</p>
         </div>
       </div>
       <p class="note">Once NARTS publishes the host hotel, we'll update this page with the address, room, and start time. Registered attendees get the details first.</p>
@@ -830,63 +866,82 @@ footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; marg
 <section id="topics" class="block">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Course Curriculum</span>
-      <h2>What we're planning to cover</h2>
-      <p>Sessions are still being finalized. The lineup will reflect what's freshest in Liberty Cloud and what we're hearing from store owners — including some of the new integrations rolling out by the time NARTS arrives.</p>
+      <span class="eyebrow">Workshop Agenda</span>
+      <h2>What we'll cover in 4 hours.</h2>
+      <p>A fast-paced mini MasterClass in two parts — eight areas of Liberty that drive the most impact on your store. Real workflows, live demos, and the hot integrations rolling out in Liberty Cloud.</p>
     </div>
 
-    <div class="topics-grid">
+    <div class="topics-grid topics-grid--four">
 
       <!-- TOPIC 1 — easy to swap -->
       <article class="topic">
-        <span class="badge is-blue">New in Liberty Cloud</span>
-        <svg class="ic-svg" aria-hidden="true"><use href="#ic-dollar"/></svg>
-        <h3>Modern ACH payouts &amp; consignor payments</h3>
-        <p>Walk through the next generation of ACH payouts in Liberty Cloud — faster, more secure, and friendlier to your back office than paper checks.</p>
+        <span class="badge is-blue">Part 1 · Intake</span>
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-tag"/></svg>
+        <h3>Item intake &amp; AI Pricing</h3>
+        <p>Drop-offs, the Item Entry App, the Pricing Guide, and AI Pricing — get items in the door faster and priced smarter from day one.</p>
       </article>
 
       <!-- TOPIC 2 — easy to swap -->
       <article class="topic">
-        <span class="badge">Marketing</span>
-        <svg class="ic-svg" aria-hidden="true"><use href="#ic-mail"/></svg>
-        <h3>Email &amp; SMS marketing with Klaviyo</h3>
-        <p>See how the upcoming Klaviyo integration plugs Liberty customer data into modern email and SMS flows — and what that unlocks for retention.</p>
+        <span class="badge">Part 1 · POS</span>
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-cart"/></svg>
+        <h3>Point of Sale</h3>
+        <p>The new Refund Sale, Add Item, Item Lookup, and the small POS habits that keep checkout fast and consistent across the team.</p>
       </article>
 
       <!-- TOPIC 3 — easy to swap -->
       <article class="topic">
-        <span class="badge is-green">Workflow</span>
-        <svg class="ic-svg" aria-hidden="true"><use href="#ic-cart"/></svg>
-        <h3>Selling everywhere with reCommerce</h3>
-        <p>Get more out of the Shopify and eBay integrations — automate listings, manage markdowns, and keep online and in-store inventory aligned.</p>
+        <span class="badge is-green">Part 1 · Money</span>
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-dollar"/></svg>
+        <h3>Modern payouts</h3>
+        <p>ACH transfers via ResaleWallet, gift cards, and barcode-sticker payouts — pay consignors faster, with less paper and fewer errors.</p>
       </article>
 
       <!-- TOPIC 4 — easy to swap -->
       <article class="topic">
-        <span class="badge is-purple">Strategy</span>
-        <svg class="ic-svg" aria-hidden="true"><use href="#ic-trending"/></svg>
-        <h3>Pricing, reporting &amp; profitability</h3>
-        <p>A working session on the reports, pricing tools, and operational habits that consistently separate the most profitable Liberty stores.</p>
+        <span class="badge is-purple">Part 1 · Admin</span>
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-zap"/></svg>
+        <h3>Admin workflows</h3>
+        <p>Merging accounts, consignor contracts, and the Kiosk app — clean back-office processes that prevent payout headaches later.</p>
       </article>
 
       <!-- TOPIC 5 — easy to swap -->
       <article class="topic">
-        <span class="badge is-blue">Industry</span>
-        <svg class="ic-svg" aria-hidden="true"><use href="#ic-globe"/></svg>
-        <h3>The state of resale &amp; what's next</h3>
-        <p>An honest look at where the resale industry is heading, what NARTS members are watching, and how Liberty is evolving to keep up.</p>
+        <span class="badge is-blue">Part 2 · Accounts</span>
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-clipboard"/></svg>
+        <h3>Account management</h3>
+        <p>Retail variants, contracts, letters, and pick lists — the daily account workflows that scale with you as your store grows.</p>
       </article>
 
       <!-- TOPIC 6 — easy to swap -->
       <article class="topic">
-        <span class="badge is-green">Open forum</span>
-        <svg class="ic-svg" aria-hidden="true"><use href="#ic-chats"/></svg>
-        <h3>Roundtable &amp; live Q&amp;A</h3>
-        <p>Bring your hardest questions. Our team — and your fellow store owners — will work through them together in an open, hands-on format.</p>
+        <span class="badge">Part 2 · Marketing</span>
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-mail"/></svg>
+        <h3>Marketing stack</h3>
+        <p>Klaviyo, ResaleRewards, and Constant Contact — turn Liberty customer data into email, SMS, and loyalty programs that drive repeat visits.</p>
+      </article>
+
+      <!-- TOPIC 7 — easy to swap -->
+      <article class="topic">
+        <span class="badge is-green">Part 2 · Online</span>
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-globe"/></svg>
+        <h3>reCommerce</h3>
+        <p>Shopify and eBay integrations — automate online listings, manage markdowns, and keep online and in-store inventory in sync.</p>
+      </article>
+
+      <!-- TOPIC 8 — easy to swap -->
+      <article class="topic">
+        <span class="badge is-purple">Part 2 · Power tools</span>
+        <svg class="ic-svg" aria-hidden="true"><use href="#ic-sparkles"/></svg>
+        <h3>Power-user extras</h3>
+        <p>Inventory Reconciliation, the built-in word processor, and the Email Manager — the underused features that quietly save hours every week.</p>
       </article>
 
     </div>
-    <p class="topics-note">Final session list confirmed closer to NARTS. Registrants get the agenda by email as soon as it's locked.</p>
+
+    <div class="topics-note">
+      <p><strong>This is a fast-paced 4-hour tour.</strong> Want to go deeper on any of these areas? Resaleworld's <a href="https://www.resaleworld.com/liberty-training.html">3-day MasterClass</a> takes the full life of an item end-to-end — virtual or in-person at our Orlando HQ.</p>
+    </div>
   </div>
 </section>
 
@@ -925,7 +980,7 @@ footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; marg
 </section>
 
 <!-- ============================================================
-     REGISTRATION (MailChimp embed placeholder)
+     REGISTRATION (HubSpot form embed placeholder)
      ============================================================ -->
 <section id="register" class="block register">
   <div class="container register-grid">
@@ -945,14 +1000,14 @@ footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; marg
       <h3>Sign up for the Liberty Seminar at NARTS 2026</h3>
       <p class="hint">Drop your details below and we'll lock in your spot.</p>
 
-      <!-- ▼ ▼ ▼  MAILCHIMP REGISTRATION FORM PLACEHOLDER  ▼ ▼ ▼ -->
+      <!-- ▼ ▼ ▼  HUBSPOT REGISTRATION FORM PLACEHOLDER  ▼ ▼ ▼ -->
       <div class="mc-placeholder" role="status" aria-live="polite">
-        MailChimp registration form goes here
-        <small>Replace this block with the MailChimp embed code, or point the button below to your hosted MailChimp signup URL.</small>
+        HubSpot registration form goes here
+        <small>Marketing → Forms → your form → Share → Embed code. Paste here.</small>
       </div>
-      <div id="mc-embed-target"><!-- MailChimp embed will be injected here --></div>
-      <a href="#" class="btn btn-primary" style="width:100%;" data-mc-url="REPLACE_WITH_MAILCHIMP_SIGNUP_URL">Register on MailChimp →</a>
-      <!-- ▲ ▲ ▲  END MAILCHIMP PLACEHOLDER  ▲ ▲ ▲ -->
+      <div id="mc-embed-target"><!-- HubSpot embed will be injected here --></div>
+      <a href="#" class="btn btn-primary" style="width:100%;" data-mc-url="REPLACE_WITH_HUBSPOT_FORM_URL">Open registration form →</a>
+      <!-- ▲ ▲ ▲  END HUBSPOT PLACEHOLDER  ▲ ▲ ▲ -->
 
       <p class="fine">By registering, you agree to receive event-related emails from Resaleworld. You can unsubscribe at any time.</p>
     </div>
@@ -984,7 +1039,11 @@ footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; marg
       </details>
       <details class="faq-item">
         <summary>What topics will be covered?</summary>
-        <div class="a">The agenda is finalized closer to the event and reflects the latest in Liberty Cloud — including new integrations, workflow improvements, and the questions we're hearing most often from store owners. Registrants receive the full agenda by email once it's locked.</div>
+        <div class="a">It's a 4-hour mini MasterClass in two parts, covering eight areas of Liberty: item intake (drop-offs, the Item Entry App, Pricing Guide, AI Pricing), point of sale, modern payouts (ACH, gift cards, barcode stickers), admin workflows (account merges, consignor contracts, Kiosk app), account management (retail variants, contracts, letters, pick lists), the marketing stack (Klaviyo, ResaleRewards, Constant Contact), reCommerce (Shopify, eBay), and power-user extras (Inventory Reconciliation, the word processor, the Email Manager). Registrants receive the full agenda by email closer to the event.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How long is the workshop?</summary>
+        <div class="a">Four hours total, split into two parts with a break in between. Plan to arrive a few minutes early and stay for the full session — the second half builds on the first.</div>
       </details>
       <details class="faq-item">
         <summary>Can I bring my team?</summary>
@@ -1040,13 +1099,13 @@ footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; marg
     });
   });
 
-  /* MailChimp button placeholder wiring.
-     If a real signup URL is provided via data-mc-url, use it.
+  /* Registration button placeholder wiring.
+     If a real form URL is provided via data-mc-url, use it.
      Otherwise scroll the user to the form area. */
   var mcBtn = document.querySelector('[data-mc-url]');
   if (mcBtn) {
     var url = mcBtn.getAttribute('data-mc-url') || '';
-    if (url && url !== 'REPLACE_WITH_MAILCHIMP_SIGNUP_URL') {
+    if (url && url !== 'REPLACE_WITH_HUBSPOT_FORM_URL') {
       mcBtn.setAttribute('href', url);
       mcBtn.setAttribute('target', '_blank');
       mcBtn.setAttribute('rel', 'noopener');
