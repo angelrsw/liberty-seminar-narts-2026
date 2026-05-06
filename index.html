@@ -1145,6 +1145,24 @@ footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; marg
 <!-- Footer omitted — provided by the resaleworld.com WordPress template. -->
 
 <!-- ============================================================
+     REGISTRATION MODAL (HubSpot form opens in overlay)
+     ============================================================ -->
+<div id="register-modal" class="register-modal" role="dialog" aria-modal="true" aria-labelledby="register-modal-title" aria-hidden="true">
+  <div class="register-modal__panel" role="document">
+    <button type="button" class="register-modal__close" data-close-modal aria-label="Close registration form">&times;</button>
+    <header class="register-modal__head">
+      <h3 id="register-modal-title">Register for the Liberty Seminar at NARTS 2026</h3>
+      <p>Free to attend. We'll confirm your spot by email and follow up with venue details.</p>
+    </header>
+    <div class="register-modal__body">
+      <div id="register-modal-embed">
+        <div class="hs-form-frame" data-region="na1" data-form-id="bbd2a6a2-bed2-4e3c-8d6c-5db5c0330bae" data-portal-id="39541941"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
      JS — small enhancements
      ============================================================ -->
 <script>
@@ -1238,24 +1256,6 @@ footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; marg
   });
 })();
 </script>
-
-<!-- ============================================================
-     REGISTRATION MODAL (HubSpot form opens in overlay)
-     ============================================================ -->
-<div id="register-modal" class="register-modal" role="dialog" aria-modal="true" aria-labelledby="register-modal-title" aria-hidden="true">
-  <div class="register-modal__panel" role="document">
-    <button type="button" class="register-modal__close" data-close-modal aria-label="Close registration form">&times;</button>
-    <header class="register-modal__head">
-      <h3 id="register-modal-title">Register for the Liberty Seminar at NARTS 2026</h3>
-      <p>Free to attend. We'll confirm your spot by email and follow up with venue details.</p>
-    </header>
-    <div class="register-modal__body">
-      <div id="register-modal-embed">
-        <div class="hs-form-frame" data-region="na1" data-form-id="bbd2a6a2-bed2-4e3c-8d6c-5db5c0330bae" data-portal-id="39541941"></div>
-      </div>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>
