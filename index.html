@@ -513,6 +513,78 @@ section.block.alt { background: var(--bg-soft); }
 @media (max-width: 880px) { .register-grid { grid-template-columns: 1fr; gap: 30px; } .register-form { padding: 28px; } }
 
 /* ============================================================
+   REGISTRATION MODAL
+   ============================================================ */
+.register-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 24, 40, 0.55);
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1000;
+  padding: 40px 16px;
+  overflow-y: auto;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+.register-modal.is-open {
+  display: flex;
+}
+.register-modal[aria-hidden="true"].is-open {
+  /* JS toggles is-open; aria-hidden stays true for SSR/no-JS fallback */
+}
+.register-modal__panel {
+  position: relative;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 640px;
+  margin: auto;
+  padding: 36px 36px 28px;
+  animation: regModalIn 220ms ease-out;
+}
+@keyframes regModalIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.register-modal__close {
+  position: absolute;
+  top: 12px; right: 14px;
+  width: 36px; height: 36px;
+  border: 0;
+  background: transparent;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.register-modal__close:hover {
+  background: var(--bg-soft);
+  color: var(--ink);
+}
+.register-modal__head h3 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+}
+.register-modal__head p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0 0 20px;
+}
+.register-modal__body {
+  /* HubSpot embed renders inside; some basic spacing safety */
+  min-height: 200px;
+}
+@media (max-width: 600px) {
+  .register-modal { padding: 16px 8px; }
+  .register-modal__panel { padding: 28px 20px 20px; border-radius: 12px; }
+}
+
+/* ============================================================
    FAQ
    ============================================================ */
 .faq-list {
@@ -998,11 +1070,11 @@ footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; marg
 
     <div class="register-form">
       <h3>Sign up for the Liberty Seminar at NARTS 2026</h3>
-      <p class="hint">Drop your details below and we'll lock in your spot.</p>
+      <p class="hint">Quick form — first name, last name, email, store name, and a few more details. Takes about a minute.</p>
 
-      <!-- HubSpot Form Embed — Liberty Seminar NARTS 2026 Registration -->
-      <div class="hs-form-frame" data-region="na1" data-form-id="bbd2a6a2-bed2-4e3c-8d6c-5db5c0330bae" data-portal-id="39541941"></div>
-      <script src="https://js.hsforms.net/forms/embed/39541941.js" defer></script>
+      <button type="button" class="btn btn-primary" data-open-modal="register-modal" style="width:100%; font-size:1.05rem; padding:18px 28px;">
+        Open registration form →
+      </button>
 
       <p class="fine">By registering, you agree to receive event-related emails from Resaleworld. You can unsubscribe at any time.</p>
     </div>
@@ -1094,24 +1166,63 @@ footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; marg
     });
   });
 
-  /* Registration button placeholder wiring.
-     If a real form URL is provided via data-mc-url, use it.
-     Otherwise scroll the user to the form area. */
-  var mcBtn = document.querySelector('[data-mc-url]');
-  if (mcBtn) {
-    var url = mcBtn.getAttribute('data-mc-url') || '';
-    if (url && url !== 'REPLACE_WITH_HUBSPOT_FORM_URL') {
-      mcBtn.setAttribute('href', url);
-      mcBtn.setAttribute('target', '_blank');
-      mcBtn.setAttribute('rel', 'noopener');
-    } else {
-      mcBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        var msg = document.querySelector('.mc-placeholder');
-        if (msg) msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
+  /* ============================================================
+     Modal — opens HubSpot registration form in an overlay
+     ============================================================ */
+  var modalOverlay = document.getElementById('register-modal');
+  var modalEmbedTarget = document.getElementById('register-modal-embed');
+  var modalScriptLoaded = false;
+
+  function openRegisterModal() {
+    if (!modalOverlay) return;
+    modalOverlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden'; // prevent background scroll
+    // Lazy-load the HubSpot embed script the first time the modal opens
+    if (!modalScriptLoaded) {
+      var s = document.createElement('script');
+      s.src = 'https://js.hsforms.net/forms/embed/39541941.js';
+      s.defer = true;
+      document.body.appendChild(s);
+      modalScriptLoaded = true;
     }
   }
+  function closeRegisterModal() {
+    if (!modalOverlay) return;
+    modalOverlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  /* Open the modal from any element with data-open-modal="register-modal" */
+  document.querySelectorAll('[data-open-modal="register-modal"]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      openRegisterModal();
+    });
+  });
+
+  /* Close on backdrop click, X button, or Escape key */
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', function (e) {
+      if (e.target === modalOverlay || e.target.matches('[data-close-modal]')) {
+        closeRegisterModal();
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modalOverlay.classList.contains('is-open')) {
+        closeRegisterModal();
+      }
+    });
+  }
+
+  /* Hero "Register Free →" link in the at-a-glance card uses href="#register".
+     We let the existing smooth-scroll handler land on the section, but ALSO
+     auto-open the modal so the user doesn't have to click twice. */
+  document.querySelectorAll('a[href="#register"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      // small delay so the smooth-scroll completes first
+      setTimeout(openRegisterModal, 450);
+    });
+  });
 
   /* Close other open FAQ items when one opens (single-open accordion).
      Comment this block out for true multi-open behavior. */
@@ -1127,6 +1238,24 @@ footer .brand-block p { color: #9AA0AB; font-size: 0.9rem; max-width: 36ch; marg
   });
 })();
 </script>
+
+<!-- ============================================================
+     REGISTRATION MODAL (HubSpot form opens in overlay)
+     ============================================================ -->
+<div id="register-modal" class="register-modal" role="dialog" aria-modal="true" aria-labelledby="register-modal-title" aria-hidden="true">
+  <div class="register-modal__panel" role="document">
+    <button type="button" class="register-modal__close" data-close-modal aria-label="Close registration form">&times;</button>
+    <header class="register-modal__head">
+      <h3 id="register-modal-title">Register for the Liberty Seminar at NARTS 2026</h3>
+      <p>Free to attend. We'll confirm your spot by email and follow up with venue details.</p>
+    </header>
+    <div class="register-modal__body">
+      <div id="register-modal-embed">
+        <div class="hs-form-frame" data-region="na1" data-form-id="bbd2a6a2-bed2-4e3c-8d6c-5db5c0330bae" data-portal-id="39541941"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
